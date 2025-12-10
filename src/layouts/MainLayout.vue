@@ -109,7 +109,7 @@ export default {
 
       Proceso: [
         {
-          nombre: ["Servicio Alimentacion Colectva"],
+          nombre: ["Servicio Alimentacion Colectiva"],
           subproceso: [
             {
               subnombre: "Registro",
