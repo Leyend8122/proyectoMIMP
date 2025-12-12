@@ -8,17 +8,22 @@
       <div class="col-3"></div>
 
       <div class="col-2">
-        <q-select v-model="model" :options="options" label="Año" dense filled />
+        <q-select v-model="respuesta.ano" :options="consulta.ano" label="Año" dense filled />
       </div>
 
       <div class="col-2">
-        <q-select v-model="model" :options="options" label="Mes" dense filled />
+        <q-select v-model="respuesta.mes" :options="consulta.mes" label="Mes" dense filled 
+              option-value="codigo"
+              option-label="descripcion"
+              emit-value
+              map-options
+        />
       </div>
 
       <div class="col-4">
         <q-select
-          v-model="model"
-          :options="options"
+          v-model="respuesta.evaluadores"
+          :options="consulta.evaluadores"
           label="Evaluadores"
           dense
           filled
@@ -39,7 +44,7 @@
       </div>
 
       <div class="col-2">
-        <q-btn color="red" icon-left="add" label="+ Registrar" @click="registrarSAC()"/>
+        <q-btn color="red" icon-left="add" label="+ Registrar" @click="registrarSAC"/>
       </div>
 
       <div class="col-12">
@@ -85,7 +90,7 @@
                   <q-item
                     clickable
                     v-close-popup
-                    @click="mantenimiento('CON', props.rowIndex)"
+                    @click="mantenimiento('REV', props.rowIndex)"
                   >
                     <q-item-section avatar>
                       <q-avatar icon="delete" color="red" text-color="white" />
@@ -119,11 +124,44 @@ export default {
 
   data() {
     return {
+
+      consulta:{
+
+          evaluadores:[
+
+          ],
+
+          ano:[
+            2024,2025,2026
+        ],
+
+          mes:[
+                { codigo: "01", descripcion: "ENERO" },
+                { codigo: "02", descripcion: "FEBRERO" },
+                { codigo: "03", descripcion: "MARZO" },
+                { codigo: "04", descripcion: "ABRIL" },
+                { codigo: "05", descripcion: "MAYO" },
+                { codigo: "06", descripcion: "JUNIO" },
+                { codigo: "07", descripcion: "JULIO" },
+                { codigo: "08", descripcion: "AGOSTO" },
+                { codigo: "09", descripcion: "SEPTIEMBRE" },
+                { codigo: "10", descripcion: "OCTUBRE" },
+                { codigo: "11", descripcion: "NOVIEMBRE" },
+                { codigo: "12", descripcion: "DICIEMBRE" },
+            ],
+      },
+
+      respuesta:{
+            evaluadores:"",
+            ano:"2025",
+            mes:"12"
+      },
+
       text: "",
       vistaRegistroSAC:false,
 
       ParamVistaRegistroSAC:{
-          operacion:""
+          operacion:null
       },
 
       listaPrincipal: [
@@ -202,7 +240,7 @@ export default {
   methods: {
 
     registrarSAC(){
-        this.ParamVistaRegistroSAC.operacion = "REG"
+        this.ParamVistaRegistroSAC.operacion = 'REG',
         this.vistaRegistroSAC = true
     },
 
@@ -211,7 +249,11 @@ export default {
     },
 
     mantenimiento(condicion,indice){
-        
+        if(condicion == 'CON'){
+            this.vistaRegistroSAC = true
+        }else if(condicion == 'REV'){
+
+        }
     },
 
     definicionUbigeo(a) {
