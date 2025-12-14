@@ -18,7 +18,6 @@
             <q-input
               filled
               v-model="datosUsuario.usuario"
-              :dense="dense"
               label="Ingreso Usuario"
               icon="search"
             >
@@ -36,7 +35,6 @@
             <q-input
               filled
               v-model="datosUsuario.contrasena"
-              :dense="dense"
               label="Ingreso Contraseña"
               icon="search"
               type="password"
@@ -78,19 +76,45 @@ export default {
         usuario: "",
         contrasena: "",
       },
+
+      respuesta: [],
+
+      requestConfig: {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      },
     };
   },
 
   methods: {
     validacionCredencial() {
-      if (
-        this.datosUsuario.usuario == "Elvis" &&
-        this.datosUsuario.contrasena == "1234"
-      ) {
-        this.$router.replace("/componentes");
-      } else {
-        alert("NO SE PUDO REGISTRAR");
-      }
+      this.validacionDatos();
+      alert(this.respuesta);
+    },
+
+    validacionDatos() {
+      let datos = new FormData();
+      datos.append("Cuerpo", JSON.stringify(this.datosUsuario));
+
+      this.$axios
+        .post(
+          "https://springbootmimp-production.up.railway.app/programa/validacion_usuario",
+          datos,
+          this.requestConfig
+        )
+        .then((response) => {
+          if (response.data != null) {
+            this.respuesta = response.data;
+          }
+        })
+        .catch((e) => {
+          this.mostrarMensaje("EXISTE PROBLEMAS DE REGISTRO", "red", "warning");
+        })
+        .finally(() => {
+          //console.log('Ingrese al finally');
+          //this.cargaConsulta.tipoRde = [];
+        });
     },
   },
 };
