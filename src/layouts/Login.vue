@@ -69,6 +69,7 @@
 </template>
 
 <script>
+import Vue from "vue";
 export default {
   data() {
     return {
@@ -90,7 +91,15 @@ export default {
   methods: {
     validacionCredencial() {
       this.validacionDatos();
-      alert(this.respuesta);
+    },
+
+    mostrarMensaje: function (mensaje, color, icono) {
+      this.$q.notify({
+        message: mensaje,
+        color: color,
+        icon: icono,
+        position: "top-right",
+      });
     },
 
     validacionDatos() {
@@ -98,14 +107,26 @@ export default {
       datos.append("Cuerpo", JSON.stringify(this.datosUsuario));
 
       this.$axios
-        .post(
-          "https://springbootmimp-production.up.railway.app/programa/validacion_usuario",
-          datos,
-          this.requestConfig
-        )
+        .post(this.$apiUrl + "validacion_usuario", datos, this.requestConfig)
         .then((response) => {
           if (response.data != null) {
             this.respuesta = response.data;
+          }
+          if (this.respuesta.length == 1) {
+            //this.$router.replace("/componentes");
+
+            this.$router.replace({
+              path: "/componentes",
+              query: this.respuesta[0],
+            });
+            Vue.prototype.$DATOS_USUARIO = this.respuesta[0];
+            //Vue.prototype.$VariableConstante = "AAAA";
+          } else {
+            this.mostrarMensaje(
+              "EL USUARIO O CONTRASEÑA NO SON CORRECTAS",
+              "orange",
+              "warning"
+            );
           }
         })
         .catch((e) => {

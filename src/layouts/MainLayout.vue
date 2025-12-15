@@ -12,8 +12,11 @@
         />
 
         <q-toolbar-title> Programa Alimentación Escolar</q-toolbar-title>
-
-        <div @click="irPaginaLogeo">Salir</div>
+        <div style="color: lightcoral">
+          <b>{{ $DATOS_USUARIO.defNombreProfesional }}</b>
+        </div>
+        <div class="col-1"></div>
+        <div @click="irPaginaLogeo"><b>SALIR</b></div>
       </q-toolbar>
     </q-header>
 
@@ -102,6 +105,10 @@ export default {
   /*components: {
     EssentialLink,
   },*/
+  created() {
+    console.log(this.$route.query);
+  },
+
   data() {
     return {
       leftDrawerOpen: false,

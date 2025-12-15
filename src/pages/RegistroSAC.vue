@@ -8,31 +8,34 @@
       <div class="col-3"></div>
 
       <div class="col-2">
-        <q-select v-model="respuesta.ano" :options="consulta.ano" label="Año" dense filled />
-      </div>
-
-      <div class="col-2">
-        <q-select v-model="respuesta.mes" :options="consulta.mes" label="Mes" dense filled 
-              option-value="codigo"
-              option-label="descripcion"
-              emit-value
-              map-options
-        />
-      </div>
-
-      <div class="col-4">
         <q-select
-          v-model="respuesta.evaluadores"
-          :options="consulta.evaluadores"
-          label="Evaluadores"
+          v-model="respuesta.ano"
+          :options="consulta.ano"
+          label="Año"
           dense
           filled
         />
       </div>
 
       <div class="col-2">
+        <q-select
+          v-model="respuesta.mes"
+          :options="consulta.mes"
+          label="Mes"
+          dense
+          filled
+          option-value="codigo"
+          option-label="descripcion"
+          emit-value
+          map-options
+        />
+      </div>
+
+      <div class="col-4">
         <q-input v-model="text" label="N Ficha" dense filled />
       </div>
+
+      <div class="col-2"></div>
 
       <div class="col-2">
         <q-btn color="red" icon-right="search" label="Consulta" />
@@ -44,7 +47,12 @@
       </div>
 
       <div class="col-2">
-        <q-btn color="red" icon-left="add" label="+ Registrar" @click="registrarSAC"/>
+        <q-btn
+          color="red"
+          icon-left="add"
+          label="+ Registrar"
+          @click="registrarSAC"
+        />
       </div>
 
       <div class="col-12">
@@ -97,8 +105,6 @@
                     </q-item-section>
                     <q-item-section> Reversion </q-item-section>
                   </q-item>
-
-
                 </q-list>
               </q-btn-dropdown>
             </q-td>
@@ -108,60 +114,55 @@
     </div>
 
     <q-dialog v-model="vistaRegistroSAC" full-width persistent>
-                    <VistaRegistroSAC :paramEnvio="ParamVistaRegistroSAC"  @estado-vistaRegistroSAC="estadoVistaRegistroSAC"  ></VistaRegistroSAC>
+      <VistaRegistroSAC
+        :paramEnvio="ParamVistaRegistroSAC"
+        @estado-vistaRegistroSAC="estadoVistaRegistroSAC"
+      ></VistaRegistroSAC>
     </q-dialog>
-
   </div>
 </template>
 
 <script>
-import VistaRegistroSAC from 'src/components/VistaRegistroSAC.vue';
+import VistaRegistroSAC from "src/components/VistaRegistroSAC.vue";
 export default {
-
-  components:{
-    VistaRegistroSAC
+  components: {
+    VistaRegistroSAC,
   },
 
   data() {
     return {
+      consulta: {
+        evaluadores: [],
 
-      consulta:{
+        ano: [2024, 2025, 2026],
 
-          evaluadores:[
-
-          ],
-
-          ano:[
-            2024,2025,2026
+        mes: [
+          { codigo: "01", descripcion: "ENERO" },
+          { codigo: "02", descripcion: "FEBRERO" },
+          { codigo: "03", descripcion: "MARZO" },
+          { codigo: "04", descripcion: "ABRIL" },
+          { codigo: "05", descripcion: "MAYO" },
+          { codigo: "06", descripcion: "JUNIO" },
+          { codigo: "07", descripcion: "JULIO" },
+          { codigo: "08", descripcion: "AGOSTO" },
+          { codigo: "09", descripcion: "SEPTIEMBRE" },
+          { codigo: "10", descripcion: "OCTUBRE" },
+          { codigo: "11", descripcion: "NOVIEMBRE" },
+          { codigo: "12", descripcion: "DICIEMBRE" },
         ],
-
-          mes:[
-                { codigo: "01", descripcion: "ENERO" },
-                { codigo: "02", descripcion: "FEBRERO" },
-                { codigo: "03", descripcion: "MARZO" },
-                { codigo: "04", descripcion: "ABRIL" },
-                { codigo: "05", descripcion: "MAYO" },
-                { codigo: "06", descripcion: "JUNIO" },
-                { codigo: "07", descripcion: "JULIO" },
-                { codigo: "08", descripcion: "AGOSTO" },
-                { codigo: "09", descripcion: "SEPTIEMBRE" },
-                { codigo: "10", descripcion: "OCTUBRE" },
-                { codigo: "11", descripcion: "NOVIEMBRE" },
-                { codigo: "12", descripcion: "DICIEMBRE" },
-            ],
       },
 
-      respuesta:{
-            evaluadores:"",
-            ano:"2025",
-            mes:"12"
+      respuesta: {
+        evaluadores: "",
+        ano: "2025",
+        mes: "12",
       },
 
       text: "",
-      vistaRegistroSAC:false,
+      vistaRegistroSAC: false,
 
-      ParamVistaRegistroSAC:{
-          operacion:null
+      ParamVistaRegistroSAC: {
+        operacion: null,
       },
 
       listaPrincipal: [
@@ -213,8 +214,8 @@ export default {
           name: "resultado",
           required: true,
           label: "RESULTADO",
-          field: a=>this.definicionResultado(a.resultado),
-          classes: a=> this.disenoResultado(a.resultado),
+          field: (a) => this.definicionResultado(a.resultado),
+          classes: (a) => this.disenoResultado(a.resultado),
           align: "center",
         },
 
@@ -222,8 +223,8 @@ export default {
           name: "estado",
           required: true,
           label: "ESTADO",
-          field: a=>this.definicionEstado(a.estado),
-          classes: a=> this.disenoEstado(a.estado),
+          field: (a) => this.definicionEstado(a.estado),
+          classes: (a) => this.disenoEstado(a.estado),
           align: "center",
         },
         {
@@ -238,102 +239,95 @@ export default {
   },
 
   methods: {
-
-    registrarSAC(){
-        this.ParamVistaRegistroSAC.operacion = 'REG',
-        this.vistaRegistroSAC = true
+    registrarSAC() {
+      (this.ParamVistaRegistroSAC.operacion = "REG"),
+        (this.vistaRegistroSAC = true);
     },
 
-    estadoVistaRegistroSAC(e){
+    estadoVistaRegistroSAC(e) {},
 
-    },
-
-    mantenimiento(condicion,indice){
-        if(condicion == 'CON'){
-            this.vistaRegistroSAC = true
-        }else if(condicion == 'REV'){
-
-        }
+    mantenimiento(condicion, indice) {
+      if (condicion == "CON") {
+        this.vistaRegistroSAC = true;
+      } else if (condicion == "REV") {
+      }
     },
 
     definicionUbigeo(a) {
       return a.departamento + "/" + a.provincia + "/" + a.distrito;
     },
 
-    definicionResultado(a){
-      var definicion = ""
+    definicionResultado(a) {
+      var definicion = "";
       switch (a) {
         case 0:
-             definicion = ""
+          definicion = "";
           break;
         case 1:
-              definicion = "COMPLETO"
+          definicion = "COMPLETO";
           break;
 
         case 2:
-              definicion = "NO CONTESTO LLAMADA"
+          definicion = "NO CONTESTO LLAMADA";
           break;
       }
-      return definicion
+      return definicion;
     },
 
-    disenoResultado(a){
-       var diseno = "";
-       switch (a) {
-        case 0:
-          diseno = "text-bold"
-        break;
-        case 1:
-          diseno = "text-bold"
-        break;
-        case 2:
-          diseno = "text-bold"
-        break;
-       }
-       return diseno;
-    },
-
-    definicionEstado(a){
-      var definicion = ""
+    disenoResultado(a) {
+      var diseno = "";
       switch (a) {
         case 0:
-             definicion = ""
+          diseno = "text-bold";
           break;
         case 1:
-              definicion = "PENDIENTE"
+          diseno = "text-bold";
           break;
         case 2:
-              definicion = "CULMINADO"
+          diseno = "text-bold";
+          break;
+      }
+      return diseno;
+    },
+
+    definicionEstado(a) {
+      var definicion = "";
+      switch (a) {
+        case 0:
+          definicion = "";
+          break;
+        case 1:
+          definicion = "PENDIENTE";
+          break;
+        case 2:
+          definicion = "CULMINADO";
           break;
 
         case 3:
-              definicion = "ELIMINADA"
+          definicion = "ELIMINADA";
           break;
       }
-      return definicion
+      return definicion;
     },
 
-    disenoEstado(a){
-       var diseno = "";
-       switch (a) {
+    disenoEstado(a) {
+      var diseno = "";
+      switch (a) {
         case 0:
-          diseno = ""
-        break;
+          diseno = "";
+          break;
         case 1:
-          diseno = "text-primary text-bold"
-        break;
+          diseno = "text-primary text-bold";
+          break;
         case 2:
-          diseno = "text-secondary text-bold"
-        break;
+          diseno = "text-secondary text-bold";
+          break;
         case 3:
-          diseno = "text-negative text-bold"
-        break;
-
-
-       }
-       return diseno;
+          diseno = "text-negative text-bold";
+          break;
+      }
+      return diseno;
     },
-
   },
 };
 </script>
