@@ -1,7 +1,7 @@
 <template>
     <q-card>
         <q-card-section class="bg-inabif" style="background-color: #dee8f5">
-          <div class="subtitulo">{{paramEnvioConfirmacion.titulo}}</div>
+          <div class="subtitulo">{{paramEnvioConfirmacion.titulo}}</div>qqqqqqqq
         </q-card-section>
         <q-card-section class="q-pt-none">
           <div class="row q-pa-md">
