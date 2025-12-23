@@ -107,7 +107,11 @@ export default {
       datos.append("Cuerpo", JSON.stringify(this.datosUsuario));
 
       this.$axios
-        .post(this.$apiUrl + "programa/validacion_usuario", datos, this.requestConfig)
+        .post(
+          this.$apiUrl + "programa/validacion_usuario",
+          datos,
+          this.requestConfig
+        )
         .then((response) => {
           if (response.data != null) {
             this.respuesta = response.data;

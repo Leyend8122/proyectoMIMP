@@ -5,9 +5,7 @@
       <div class="col-4">
         <h6>Registro de Servicio Alimentación Colectiva</h6>
       </div>
-      <div class="col-3">
-            <b>{{ $DATOS_USUARIO}}</b>
-      </div>
+      <div class="col-3"></div>
 
       <div class="col-2">
         <q-select
@@ -154,7 +152,6 @@ export default {
         ],
       },
 
-
       respuesta: {
         evaluadores: "",
         ano: "2025",
@@ -165,8 +162,8 @@ export default {
       vistaRegistroSAC: false,
 
       ParamVistaRegistroSAC: {
-        usuario:null,
-        codigo:null,
+        usuario: null,
+        codigo: null,
         operacion: null,
       },
 
@@ -251,17 +248,12 @@ export default {
 
   methods: {
     registrarSAC() {
-          if (this.ParamVistaRegistroSAC.operacion = "REG"){
-                    this.$nextTick(() => {
-                      this.AperturaFicha();
-                    })
-                    this.vistaRegistroSAC = true;
-              
-                  
-                  
-          }
-          
-
+      if ((this.ParamVistaRegistroSAC.operacion = "REG")) {
+        this.$nextTick(() => {
+          this.AperturaFicha();
+        });
+        this.vistaRegistroSAC = true;
+      }
     },
 
     estadoVistaRegistroSAC(e) {},
@@ -351,25 +343,27 @@ export default {
 
     AperturaFicha() {
       let datos = new FormData();
-      datos.append("codigoUsuario", JSON.stringify(this.$DATOS_USUARIO.codUsuario));
+      datos.append(
+        "codigoUsuario",
+        JSON.stringify(this.$DATOS_USUARIO.codUsuario)
+      );
 
       this.$axios
         .post(this.$apiUrl + "fichas/Aperturas", datos, this.requestConfig)
         .then((response) => {
           if (response.data != null) {
-            console.log('-------');
-            this.ParamVistaRegistroSAC.usuario = this.$DATOS_USUARIO.codUsuario,
-            console.log('-------');
-            this.ParamVistaRegistroSAC.codigo = response.data
+            console.log("-------");
+            (this.ParamVistaRegistroSAC.usuario =
+              this.$DATOS_USUARIO.codUsuario),
+              console.log("-------");
+            this.ParamVistaRegistroSAC.codigo = response.data;
           }
         })
         .catch((e) => {
           this.mostrarMensaje("EXISTE PROBLEMAS DE REGISTRO", "red", "warning");
         })
-        .finally(() => {
-        });
+        .finally(() => {});
     },
-
 
     mostrarMensaje: function (mensaje, color, icono) {
       this.$q.notify({
@@ -379,9 +373,6 @@ export default {
         position: "top-right",
       });
     },
-
-
-
   },
 };
 </script>
