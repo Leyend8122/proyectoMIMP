@@ -3716,21 +3716,15 @@
                         ></q-select>
                       </div>
                       <div class="col-2">
-                        <q-input
-                          v-model="respuestaDetalle[50].pdf_fecha_caducidad"
-                          filled
-                          label="FECHA CADUCIDAD"
-                          dense
-                          :min="0"
-                        />
+                        <q-input v-model="respuestaDetalle[50].pdf_fecha_caducidad" dense type="date" />
                       </div>
                       <div class="col-1">
-                        <q-input
+                        <!--<q-input
                           v-model.number="respuestaDetalle[50].pdf_material_esp"
                           label="Otros"
                           dense
                           :min="0"
-                        />
+                        />-->
                       </div>
                       <div class="col-5">
                         <span>cocina </span>
@@ -8666,7 +8660,7 @@
         v-close-popup
       />
 
-      <!--<div>{{ respuestaCabecera }}</div>-->
+      <div>{{ date }}</div>
       <!--v-close-popup-->
 
       <q-dialog v-model="EsConfirmacionRegistroSAC" persistent>
@@ -8700,6 +8694,7 @@ export default {
   },
   data() {
     return {
+      date:null,
       ParamRegistroResponsable: {
         pie_id: null,
       },
