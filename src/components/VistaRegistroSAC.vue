@@ -3716,7 +3716,11 @@
                         ></q-select>
                       </div>
                       <div class="col-2">
-                        <q-input v-model="respuestaDetalle[50].pdf_fecha_caducidad" dense type="date" />
+                        <q-input
+                          v-model="respuestaDetalle[50].pdf_fecha_caducidad"
+                          dense
+                          type="date"
+                        />
                       </div>
                       <div class="col-1">
                         <!--<q-input
@@ -3729,6 +3733,18 @@
                       <div class="col-5">
                         <span>cocina </span>
                       </div>
+
+                      <div class="col-2">
+                        <q-input
+                          v-model.number="respuestaDetalle[51].pdf_cantidad"
+                          type="number"
+                          filled
+                          label="CANTIDAD"
+                          dense
+                          :min="0"
+                        />
+                      </div>
+
                       <div class="col-2">
                         <q-select
                           v-model="respuestaDetalle[51].pdf_tipo_cocina"
@@ -8694,7 +8710,7 @@ export default {
   },
   data() {
     return {
-      date:null,
+      date: null,
       ParamRegistroResponsable: {
         pie_id: null,
       },
