@@ -9,7 +9,7 @@
 
       <div class="col-2">
         <q-select
-          v-model="respuesta.ano"
+          v-model="respuesta.ano_"
           :options="consulta.ano"
           label="Año"
           dense
@@ -19,7 +19,7 @@
 
       <div class="col-2">
         <q-select
-          v-model="respuesta.mes"
+          v-model="respuesta.mes_"
           :options="consulta.mes"
           label="Mes"
           dense
@@ -32,13 +32,13 @@
       </div>
 
       <div class="col-4">
-        <q-input v-model="text" label="N Ficha" dense filled />
+        <q-input v-model="respuesta.ficha_" label="N Ficha" dense filled />
       </div>
 
       <div class="col-2"></div>
 
       <div class="col-2">
-        <q-btn color="red" icon-right="search" label="Consulta" />
+        <q-btn color="red" icon-right="search" label="Consulta" @click="listaFicha"/>
       </div>
 
       <div class="col-10"></div>
@@ -84,7 +84,7 @@
                 no-icon-animation
               >
                 <q-list>
-                  <q-item
+                  <q-item v-if="props.row.resultado == 1"
                     clickable
                     v-close-popup
                     @click="mantenimiento('CON', props.rowIndex)"
@@ -92,10 +92,21 @@
                     <q-item-section avatar>
                       <q-avatar icon="search" color="red" text-color="white" />
                     </q-item-section>
-                    <q-item-section> Consultar </q-item-section>
+                    <q-item-section> CONSULTAR </q-item-section>
                   </q-item>
 
-                  <q-item
+                  <q-item v-if="props.row.resultado != 1"
+                    clickable
+                    v-close-popup
+                    @click="mantenimiento('MOD', props.rowIndex)"
+                  >
+                    <q-item-section avatar>
+                      <q-avatar icon="search" color="red" text-color="white" />
+                    </q-item-section>
+                    <q-item-section> MODIFICAR </q-item-section>
+                  </q-item>
+
+                  <!--<q-item
                     clickable
                     v-close-popup
                     @click="mantenimiento('REV', props.rowIndex)"
@@ -103,8 +114,9 @@
                     <q-item-section avatar>
                       <q-avatar icon="delete" color="red" text-color="white" />
                     </q-item-section>
-                    <q-item-section> Reversion </q-item-section>
-                  </q-item>
+                    <q-item-section>  </q-item-section>
+                  </q-item>-->
+
                 </q-list>
               </q-btn-dropdown>
             </q-td>
@@ -137,25 +149,26 @@ export default {
         ano: [2024, 2025, 2026],
 
         mes: [
-          { codigo: "01", descripcion: "ENERO" },
-          { codigo: "02", descripcion: "FEBRERO" },
-          { codigo: "03", descripcion: "MARZO" },
-          { codigo: "04", descripcion: "ABRIL" },
-          { codigo: "05", descripcion: "MAYO" },
-          { codigo: "06", descripcion: "JUNIO" },
-          { codigo: "07", descripcion: "JULIO" },
-          { codigo: "08", descripcion: "AGOSTO" },
-          { codigo: "09", descripcion: "SEPTIEMBRE" },
-          { codigo: "10", descripcion: "OCTUBRE" },
-          { codigo: "11", descripcion: "NOVIEMBRE" },
-          { codigo: "12", descripcion: "DICIEMBRE" },
+          { codigo: 1, descripcion: "ENERO" },
+          { codigo: 2, descripcion: "FEBRERO" },
+          { codigo: 3, descripcion: "MARZO" },
+          { codigo: 4, descripcion: "ABRIL" },
+          { codigo: 5, descripcion: "MAYO" },
+          { codigo: 6, descripcion: "JUNIO" },
+          { codigo: 7, descripcion: "JULIO" },
+          { codigo: 8, descripcion: "AGOSTO" },
+          { codigo: 9, descripcion: "SEPTIEMBRE" },
+          { codigo: 10, descripcion: "OCTUBRE" },
+          { codigo: 11, descripcion: "NOVIEMBRE" },
+          { codigo: 12, descripcion: "DICIEMBRE" },
         ],
       },
 
       respuesta: {
-        evaluadores: "",
-        ano: "2025",
-        mes: "12",
+        ano_: "",
+        mes_: "",
+        registra_:'',
+        ficha_: ""
       },
 
       text: "",
@@ -198,26 +211,44 @@ export default {
 
       columnaPrincipal: [
         {
-          name: "numeroFicha",
+          name: "nombreFicha",
           required: true,
-          label: "N Ficha",
-          field: "numeroFicha",
+          label: "N° FICHA",
+          field: "nombreFicha",
           align: "left",
         },
+
+        {
+          name: "fechaRegistro",
+          required: true,
+          label: "FECHA REGISTRO",
+          field: "fechaRegistro",
+          align: "left",
+        },
+
+
         {
           name: "ubigeo",
           required: true,
-          label: "Ubigeo",
+          label: "UBIGEO",
           field: (a) => this.definicionUbigeo(a),
           align: "left",
         },
         {
-          name: "nombreEvaluador",
+          name: "nombreInstitucion",
           required: true,
-          label: "Evaluador",
-          field: "nombreEvaluador",
+          label: "INSTITUCION",
+          field: "nombreInstitucion",
           align: "left",
         },
+        {
+          name: "nombreResponsable",
+          required: true,
+          label: "RESPONSABLE",
+          field: "nombreResponsable",
+          align: "left",
+        },
+
         {
           name: "resultado",
           required: true,
@@ -259,9 +290,17 @@ export default {
     estadoVistaRegistroSAC(e) {},
 
     mantenimiento(condicion, indice) {
+      var numeroFicha = this.listaPrincipal[indice].codigoFicha
       if (condicion == "CON") {
+        this.ParamVistaRegistroSAC.operacion = "CON"
+        this.ParamVistaRegistroSAC.usuario = this.$DATOS_USUARIO.codUsuario
+        this.ParamVistaRegistroSAC.codigo = numeroFicha
         this.vistaRegistroSAC = true;
-      } else if (condicion == "REV") {
+      } else if (condicion == "MOD") {
+        this.ParamVistaRegistroSAC.operacion = "MOD"
+        this.ParamVistaRegistroSAC.usuario = this.$DATOS_USUARIO.codUsuario
+        this.ParamVistaRegistroSAC.codigo = numeroFicha
+        this.vistaRegistroSAC = true;
       }
     },
 
@@ -306,10 +345,10 @@ export default {
       var definicion = "";
       switch (a) {
         case 0:
-          definicion = "";
+          definicion = "PENDIENTE";
           break;
         case 1:
-          definicion = "PENDIENTE";
+          //definicion = "PENDIENTE";
           break;
         case 2:
           definicion = "CULMINADO";
@@ -340,6 +379,31 @@ export default {
       }
       return diseno;
     },
+
+
+    listaFicha() {
+      this.respuesta.registra_ = this.$DATOS_USUARIO.codUsuario;
+
+      let datos = new FormData();
+      datos.append(
+        "Cuerpo",
+        JSON.stringify(this.respuesta)
+      );
+
+      this.$axios
+        .post(this.$apiUrl + "fichas/listaficha", datos, this.requestConfig)
+        .then((response) => {
+          if (response.data != null) {
+             console.log(response.data);
+             this.listaPrincipal = response.data;
+          }
+        })
+        .catch((e) => {
+          this.mostrarMensaje("EXISTE PROBLEMAS DE REGISTRO", "red", "warning");
+        })
+        .finally(() => {});
+    },
+
 
     AperturaFicha() {
       let datos = new FormData();

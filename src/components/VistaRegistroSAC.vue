@@ -5,7 +5,8 @@
         <div class="col-6">
           <span class="text-body1 text-bold">REGISTRO</span>
         </div>
-        <div class="col-6" style="color: white">{{ paramEnvio }}</div>
+
+        <div class="col-6" style="color:black">{{ paramEnvio }}</div>
       </div>
     </q-card-section>
     <q-card-section class="q-pt-none">
@@ -172,6 +173,7 @@
               v-model="respuestaCabecera[0].pf_derracionesrecibieron"
               label="DETALLAR"
               dense
+              :disable="paramEnvio.operacion == 'CON' ? true : false"
             />
           </div>
 
@@ -185,6 +187,7 @@
               dense
               filled
               :min="0"
+              :disable="paramEnvio.operacion == 'CON' ? true : false"
             />
           </div>
 
@@ -257,18 +260,18 @@
                       <div class="col-2" style="margin-top: -10px">
                         <q-radio
                           v-model="respuestaDetalle[0].pdf_cumplimiento"
-                          val="0"
+                          :val=0
                           label="SI"
                         />
                         <q-radio
                           v-model="respuestaDetalle[0].pdf_cumplimiento"
-                          val="1"
+                          :val=1
                           label="NO"
                         />
 
                         <q-radio
                           v-model="respuestaDetalle[0].pdf_cumplimiento"
-                          val="2"
+                          :val=2
                           label="NO CORRESPONDE"
                         />
                       </div>
@@ -330,17 +333,17 @@
                       <div class="col-2" style="margin-top: -10px">
                         <q-radio
                           v-model="respuestaDetalle[1].pdf_cumplimiento"
-                          val="0"
+                          :val=0
                           label="SI"
                         />
                         <q-radio
                           v-model="respuestaDetalle[1].pdf_cumplimiento"
-                          val="1"
+                          :val=1
                           label="NO"
                         />
                         <q-radio
                           v-model="respuestaDetalle[1].pdf_cumplimiento"
-                          val="2"
+                          :val=2
                           label="NO CORRESPONDE"
                         />
                       </div>
@@ -401,17 +404,17 @@
                       <div class="col-2" style="margin-top: -10px">
                         <q-radio
                           v-model="respuestaDetalle[2].pdf_cumplimiento"
-                          val="0"
+                          :val=0
                           label="SI"
                         />
                         <q-radio
                           v-model="respuestaDetalle[2].pdf_cumplimiento"
-                          val="1"
+                          :val=1
                           label="NO"
                         />
                         <q-radio
                           v-model="respuestaDetalle[2].pdf_cumplimiento"
-                          val="2"
+                          :val=2
                           label="NO CORRESPONDE"
                         />
                       </div>
@@ -473,17 +476,17 @@
                       <div class="col-2" style="margin-top: -10px">
                         <q-radio
                           v-model="respuestaDetalle[3].pdf_cumplimiento"
-                          val="0"
+                          :val=0
                           label="SI"
                         />
                         <q-radio
                           v-model="respuestaDetalle[3].pdf_cumplimiento"
-                          val="1"
+                          :val=1
                           label="NO"
                         />
                         <q-radio
                           v-model="respuestaDetalle[3].pdf_cumplimiento"
-                          val="2"
+                          :val=2
                           label="NO CORRESPONDE"
                         />
                       </div>
@@ -545,17 +548,17 @@
                       <div class="col-2" style="margin-top: -10px">
                         <q-radio
                           v-model="respuestaDetalle[4].pdf_cumplimiento"
-                          val="0"
+                          :val=0
                           label="SI"
                         />
                         <q-radio
                           v-model="respuestaDetalle[4].pdf_cumplimiento"
-                          val="1"
+                          :val=1
                           label="NO"
                         />
                         <q-radio
                           v-model="respuestaDetalle[4].pdf_cumplimiento"
-                          val="2"
+                          :val=2
                           label="NO CORRESPONDE"
                         />
                       </div>
@@ -617,17 +620,17 @@
                       <div class="col-2" style="margin-top: -10px">
                         <q-radio
                           v-model="respuestaDetalle[5].pdf_cumplimiento"
-                          val="0"
+                          :val=0
                           label="SI"
                         />
                         <q-radio
                           v-model="respuestaDetalle[5].pdf_cumplimiento"
-                          val="1"
+                          :val=1
                           label="NO"
                         />
                         <q-radio
                           v-model="respuestaDetalle[5].pdf_cumplimiento"
-                          val="2"
+                          :val=2
                           label="NO CORRESPONDE"
                         />
                       </div>
@@ -709,17 +712,17 @@
                       <div class="col-2" style="margin-top: -10px">
                         <q-radio
                           v-model="respuestaDetalle[6].pdf_cumplimiento"
-                          val="0"
+                          :val=0
                           label="SI"
                         />
                         <q-radio
                           v-model="respuestaDetalle[6].pdf_cumplimiento"
-                          val="1"
+                          :val=1
                           label="NO"
                         />
                         <q-radio
                           v-model="respuestaDetalle[6].pdf_cumplimiento"
-                          val="2"
+                          :val=2
                           label="NO CORRESPONDE"
                         />
                       </div>
@@ -780,17 +783,17 @@
                       <div class="col-2" style="margin-top: -10px">
                         <q-radio
                           v-model="respuestaDetalle[7].pdf_cumplimiento"
-                          val="0"
+                          :val=0
                           label="SI"
                         />
                         <q-radio
                           v-model="respuestaDetalle[7].pdf_cumplimiento"
-                          val="1"
+                          :val=1
                           label="NO"
                         />
                         <q-radio
                           v-model="respuestaDetalle[7].pdf_cumplimiento"
-                          val="2"
+                          :val=2
                           label="NO CORRESPONDE"
                         />
                       </div>
@@ -849,18 +852,18 @@
                       <div class="col-2" style="margin-top: -10px">
                         <q-radio
                           v-model="respuestaDetalle[8].pdf_cumplimiento"
-                          val="0"
+                          :val=0
                           label="SI"
                         />
                         <q-radio
                           v-model="respuestaDetalle[8].pdf_cumplimiento"
-                          val="1"
+                          :val=1
                           label="NO"
                         />
 
                         <q-radio
                           v-model="respuestaDetalle[8].pdf_cumplimiento"
-                          val="2"
+                          :val=2
                           label="NO CORRESPONDE"
                         />
                       </div>
@@ -919,18 +922,18 @@
                       <div class="col-2" style="margin-top: -10px">
                         <q-radio
                           v-model="respuestaDetalle[9].pdf_cumplimiento"
-                          val="0"
+                          :val=0
                           label="SI"
                         />
                         <q-radio
                           v-model="respuestaDetalle[9].pdf_cumplimiento"
-                          val="1"
+                          :val=1
                           label="NO"
                         />
 
                         <q-radio
                           v-model="respuestaDetalle[9].pdf_cumplimiento"
-                          val="2"
+                          :val=2
                           label="NO CORRESPONDE"
                         />
                       </div>
@@ -989,17 +992,17 @@
                       <div class="col-2" style="margin-top: -10px">
                         <q-radio
                           v-model="respuestaDetalle[10].pdf_cumplimiento"
-                          val="0"
+                          :val=0
                           label="SI"
                         />
                         <q-radio
                           v-model="respuestaDetalle[10].pdf_cumplimiento"
-                          val="1"
+                          :val=1
                           label="NO"
                         />
                         <q-radio
                           v-model="respuestaDetalle[10].pdf_cumplimiento"
-                          val="2"
+                          :val=2
                           label="NO CORRESPONDE"
                         />
                       </div>
@@ -1059,17 +1062,17 @@
                       <div class="col-2" style="margin-top: -10px">
                         <q-radio
                           v-model="respuestaDetalle[11].pdf_cumplimiento"
-                          val="0"
+                          :val=0
                           label="SI"
                         />
                         <q-radio
                           v-model="respuestaDetalle[11].pdf_cumplimiento"
-                          val="1"
+                          :val=1
                           label="NO"
                         />
                         <q-radio
                           v-model="respuestaDetalle[11].pdf_cumplimiento"
-                          val="2"
+                          :val=2
                           label="NO CORRESPONDE"
                         />
                       </div>
@@ -1133,17 +1136,17 @@
                       <div class="col-2" style="margin-top: -10px">
                         <q-radio
                           v-model="respuestaDetalle[12].pdf_cumplimiento"
-                          val="0"
+                          :val=0
                           label="SI"
                         />
                         <q-radio
                           v-model="respuestaDetalle[12].pdf_cumplimiento"
-                          val="1"
+                          :val=1
                           label="NO"
                         />
                         <q-radio
                           v-model="respuestaDetalle[12].pdf_cumplimiento"
-                          val="2"
+                          :val=2
                           label="NO CORRESPONDE"
                         />
                       </div>
@@ -1203,17 +1206,17 @@
                       <div class="col-2" style="margin-top: -10px">
                         <q-radio
                           v-model="respuestaDetalle[13].pdf_cumplimiento"
-                          val="0"
+                          :val=0
                           label="SI"
                         />
                         <q-radio
                           v-model="respuestaDetalle[13].pdf_cumplimiento"
-                          val="1"
+                          :val=1
                           label="NO"
                         />
                         <q-radio
                           v-model="respuestaDetalle[13].pdf_cumplimiento"
-                          val="2"
+                          :val=2
                           label="NO CORRESPONDE"
                         />
                       </div>
@@ -1276,17 +1279,17 @@
                       <div class="col-2" style="margin-top: -10px">
                         <q-radio
                           v-model="respuestaDetalle[14].pdf_cumplimiento"
-                          val="0"
+                          :val=0
                           label="SI"
                         />
                         <q-radio
                           v-model="respuestaDetalle[14].pdf_cumplimiento"
-                          val="1"
+                          :val=1
                           label="NO"
                         />
                         <q-radio
                           v-model="respuestaDetalle[14].pdf_cumplimiento"
-                          val="2"
+                          :val=2
                           label="NO CORRESPONDE"
                         />
                       </div>
@@ -1350,17 +1353,17 @@
                       <div class="col-2" style="margin-top: -10px">
                         <q-radio
                           v-model="respuestaDetalle[15].pdf_cumplimiento"
-                          val="0"
+                          :val=0
                           label="SI"
                         />
                         <q-radio
                           v-model="respuestaDetalle[15].pdf_cumplimiento"
-                          val="1"
+                          :val=1
                           label="NO"
                         />
                         <q-radio
                           v-model="respuestaDetalle[15].pdf_cumplimiento"
-                          val="2"
+                          :val=2
                           label="NO CORRESPONDE"
                         />
                       </div>
@@ -1423,17 +1426,17 @@
                       <div class="col-2" style="margin-top: -10px">
                         <q-radio
                           v-model="respuestaDetalle[16].pdf_cumplimiento"
-                          val="0"
+                          :val=0
                           label="SI"
                         />
                         <q-radio
                           v-model="respuestaDetalle[16].pdf_cumplimiento"
-                          val="1"
+                          :val=1
                           label="NO"
                         />
                         <q-radio
                           v-model="respuestaDetalle[16].pdf_cumplimiento"
-                          val="2"
+                          :val=2
                           label="NO CORRESPONDE"
                         />
                       </div>
@@ -1496,17 +1499,17 @@
                       <div class="col-2" style="margin-top: -10px">
                         <q-radio
                           v-model="respuestaDetalle[17].pdf_cumplimiento"
-                          val="0"
+                          :val=0
                           label="SI"
                         />
                         <q-radio
                           v-model="respuestaDetalle[17].pdf_cumplimiento"
-                          val="1"
+                          :val=1
                           label="NO"
                         />
                         <q-radio
                           v-model="respuestaDetalle[17].pdf_cumplimiento"
-                          val="2"
+                          :val=2
                           label="NO CORRESPONDE"
                         />
                       </div>
@@ -1569,17 +1572,17 @@
                       <div class="col-2" style="margin-top: -10px">
                         <q-radio
                           v-model="respuestaDetalle[18].pdf_cumplimiento"
-                          val="0"
+                          :val=0
                           label="SI"
                         />
                         <q-radio
                           v-model="respuestaDetalle[18].pdf_cumplimiento"
-                          val="1"
+                          :val=1
                           label="NO"
                         />
                         <q-radio
                           v-model="respuestaDetalle[18].pdf_cumplimiento"
-                          val="2"
+                          :val=2
                           label="NO CORRESPONDE"
                         />
                       </div>
@@ -1675,17 +1678,17 @@
                       <div class="col-2" style="margin-top: -10px">
                         <q-radio
                           v-model="respuestaDetalle[19].pdf_cumplimiento"
-                          val="0"
+                          :val=0
                           label="SI"
                         />
                         <q-radio
                           v-model="respuestaDetalle[19].pdf_cumplimiento"
-                          val="1"
+                          :val=1
                           label="NO"
                         />
                         <q-radio
                           v-model="respuestaDetalle[19].pdf_cumplimiento"
-                          val="2"
+                          :val=2
                           label="NO CORRESPONDE"
                         />
                       </div>
@@ -1748,17 +1751,17 @@
                       <div class="col-2" style="margin-top: -10px">
                         <q-radio
                           v-model="respuestaDetalle[20].pdf_cumplimiento"
-                          val="0"
+                          :val=0
                           label="SI"
                         />
                         <q-radio
                           v-model="respuestaDetalle[20].pdf_cumplimiento"
-                          val="1"
+                          :val=1
                           label="NO"
                         />
                         <q-radio
                           v-model="respuestaDetalle[20].pdf_cumplimiento"
-                          val="2"
+                          :val=2
                           label="NO CORRESPONDE"
                         />
                       </div>
@@ -1821,17 +1824,17 @@
                       <div class="col-2" style="margin-top: -10px">
                         <q-radio
                           v-model="respuestaDetalle[21].pdf_cumplimiento"
-                          val="0"
+                          :val=0
                           label="SI"
                         />
                         <q-radio
                           v-model="respuestaDetalle[21].pdf_cumplimiento"
-                          val="1"
+                          :val=1
                           label="NO"
                         />
                         <q-radio
                           v-model="respuestaDetalle[21].pdf_cumplimiento"
-                          val="2"
+                          :val=2
                           label="NO CORRESPONDE"
                         />
                       </div>
@@ -1894,17 +1897,17 @@
                       <div class="col-2" style="margin-top: -10px">
                         <q-radio
                           v-model="respuestaDetalle[22].pdf_cumplimiento"
-                          val="0"
+                          :val=0
                           label="SI"
                         />
                         <q-radio
                           v-model="respuestaDetalle[22].pdf_cumplimiento"
-                          val="1"
+                          :val=1
                           label="NO"
                         />
                         <q-radio
                           v-model="respuestaDetalle[22].pdf_cumplimiento"
-                          val="2"
+                          :val=2
                           label="NO CORRESPONDE"
                         />
                       </div>
@@ -1967,17 +1970,17 @@
                       <div class="col-2" style="margin-top: -10px">
                         <q-radio
                           v-model="respuestaDetalle[23].pdf_cumplimiento"
-                          val="0"
+                          :val=0
                           label="SI"
                         />
                         <q-radio
                           v-model="respuestaDetalle[23].pdf_cumplimiento"
-                          val="1"
+                          :val=1
                           label="NO"
                         />
                         <q-radio
                           v-model="respuestaDetalle[23].pdf_cumplimiento"
-                          val="2"
+                          :val=2
                           label="NO CORRESPONDE"
                         />
                       </div>
@@ -2041,17 +2044,17 @@
                       <div class="col-2" style="margin-top: -10px">
                         <q-radio
                           v-model="respuestaDetalle[24].pdf_cumplimiento"
-                          val="0"
+                          :val=0
                           label="SI"
                         />
                         <q-radio
                           v-model="respuestaDetalle[24].pdf_cumplimiento"
-                          val="1"
+                          :val=1
                           label="NO"
                         />
                         <q-radio
                           v-model="respuestaDetalle[24].pdf_cumplimiento"
-                          val="2"
+                          :val=2
                           label="NO CORRESPONDE"
                         />
                       </div>
@@ -2111,17 +2114,17 @@
                       <div class="col-2" style="margin-top: -10px">
                         <q-radio
                           v-model="respuestaDetalle[25].pdf_cumplimiento"
-                          val="0"
+                          :val=0
                           label="SI"
                         />
                         <q-radio
                           v-model="respuestaDetalle[25].pdf_cumplimiento"
-                          val="1"
+                          :val=1
                           label="NO"
                         />
                         <q-radio
                           v-model="respuestaDetalle[25].pdf_cumplimiento"
-                          val="2"
+                          :val=2
                           label="NO CORRESPONDE"
                         />
                       </div>
@@ -2181,17 +2184,17 @@
                       <div class="col-2" style="margin-top: -10px">
                         <q-radio
                           v-model="respuestaDetalle[26].pdf_cumplimiento"
-                          val="0"
+                          :val=0
                           label="SI"
                         />
                         <q-radio
                           v-model="respuestaDetalle[26].pdf_cumplimiento"
-                          val="1"
+                          :val=1
                           label="NO"
                         />
                         <q-radio
                           v-model="respuestaDetalle[26].pdf_cumplimiento"
-                          val="2"
+                          :val=2
                           label="NO CORRESPONDE"
                         />
                       </div>
@@ -2255,17 +2258,17 @@
                       <div class="col-2" style="margin-top: -10px">
                         <q-radio
                           v-model="respuestaDetalle[27].pdf_cumplimiento"
-                          val="0"
+                          :val=0
                           label="SI"
                         />
                         <q-radio
                           v-model="respuestaDetalle[27].pdf_cumplimiento"
-                          val="1"
+                          :val=1
                           label="NO"
                         />
                         <q-radio
                           v-model="respuestaDetalle[27].pdf_cumplimiento"
-                          val="2"
+                          :val=2
                           label="NO CORRESPONDE"
                         />
                       </div>
@@ -2331,17 +2334,17 @@
                       <div class="col-2" style="margin-top: -10px">
                         <q-radio
                           v-model="respuestaDetalle[28].pdf_cumplimiento"
-                          val="0"
+                          :val=0
                           label="SI"
                         />
                         <q-radio
                           v-model="respuestaDetalle[28].pdf_cumplimiento"
-                          val="1"
+                          :val=1
                           label="NO"
                         />
                         <q-radio
                           v-model="respuestaDetalle[28].pdf_cumplimiento"
-                          val="2"
+                          :val=2
                           label="NO CORRESPONDE"
                         />
                       </div>
@@ -2403,17 +2406,17 @@
                       <div class="col-2" style="margin-top: -10px">
                         <q-radio
                           v-model="respuestaDetalle[29].pdf_cumplimiento"
-                          val="0"
+                          :val=0
                           label="SI"
                         />
                         <q-radio
                           v-model="respuestaDetalle[29].pdf_cumplimiento"
-                          val="1"
+                          :val=1
                           label="NO"
                         />
                         <q-radio
                           v-model="respuestaDetalle[29].pdf_cumplimiento"
-                          val="2"
+                          :val=2
                           label="NO CORRESPONDE"
                         />
                       </div>
@@ -2473,17 +2476,17 @@
                       <div class="col-2" style="margin-top: -10px">
                         <q-radio
                           v-model="respuestaDetalle[30].pdf_cumplimiento"
-                          val="0"
+                          :val=0
                           label="SI"
                         />
                         <q-radio
                           v-model="respuestaDetalle[30].pdf_cumplimiento"
-                          val="1"
+                          :val=1
                           label="NO"
                         />
                         <q-radio
                           v-model="respuestaDetalle[30].pdf_cumplimiento"
-                          val="2"
+                          :val=2
                           label="NO CORRESPONDE"
                         />
                       </div>
@@ -2546,17 +2549,17 @@
                       <div class="col-2" style="margin-top: -10px">
                         <q-radio
                           v-model="respuestaDetalle[31].pdf_cumplimiento"
-                          val="0"
+                          :val=0
                           label="SI"
                         />
                         <q-radio
                           v-model="respuestaDetalle[31].pdf_cumplimiento"
-                          val="1"
+                          :val=1
                           label="NO"
                         />
                         <q-radio
                           v-model="respuestaDetalle[31].pdf_cumplimiento"
-                          val="2"
+                          :val=2
                           label="NO CORRESPONDE"
                         />
                       </div>
@@ -2619,17 +2622,17 @@
                       <div class="col-2" style="margin-top: -10px">
                         <q-radio
                           v-model="respuestaDetalle[32].pdf_cumplimiento"
-                          val="0"
+                          :val=0
                           label="SI"
                         />
                         <q-radio
                           v-model="respuestaDetalle[32].pdf_cumplimiento"
-                          val="1"
+                          :val=1
                           label="NO"
                         />
                         <q-radio
                           v-model="respuestaDetalle[32].pdf_cumplimiento"
-                          val="2"
+                          :val=2
                           label="NO CORRESPONDE"
                         />
                       </div>
@@ -2692,17 +2695,17 @@
                       <div class="col-2" style="margin-top: -10px">
                         <q-radio
                           v-model="respuestaDetalle[33].pdf_cumplimiento"
-                          val="0"
+                          :val=0
                           label="SI"
                         />
                         <q-radio
                           v-model="respuestaDetalle[33].pdf_cumplimiento"
-                          val="1"
+                          :val=1
                           label="NO"
                         />
                         <q-radio
                           v-model="respuestaDetalle[33].pdf_cumplimiento"
-                          val="2"
+                          :val=2
                           label="NO CORRESPONDE"
                         />
                       </div>
@@ -2765,17 +2768,17 @@
                       <div class="col-2" style="margin-top: -10px">
                         <q-radio
                           v-model="respuestaDetalle[34].pdf_cumplimiento"
-                          val="0"
+                          :val=0
                           label="SI"
                         />
                         <q-radio
                           v-model="respuestaDetalle[34].pdf_cumplimiento"
-                          val="1"
+                          :val=1
                           label="NO"
                         />
                         <q-radio
                           v-model="respuestaDetalle[34].pdf_cumplimiento"
-                          val="2"
+                          :val=2
                           label="NO CORRESPONDE"
                         />
                       </div>
@@ -2838,17 +2841,17 @@
                       <div class="col-2" style="margin-top: -10px">
                         <q-radio
                           v-model="respuestaDetalle[35].pdf_cumplimiento"
-                          val="0"
+                          :val=0
                           label="SI"
                         />
                         <q-radio
                           v-model="respuestaDetalle[35].pdf_cumplimiento"
-                          val="1"
+                          :val=1
                           label="NO"
                         />
                         <q-radio
                           v-model="respuestaDetalle[35].pdf_cumplimiento"
-                          val="2"
+                          :val=2
                           label="NO CORRESPONDE"
                         />
                       </div>
@@ -2912,17 +2915,17 @@
                       <div class="col-2" style="margin-top: -10px">
                         <q-radio
                           v-model="respuestaDetalle[36].pdf_cumplimiento"
-                          val="0"
+                          :val=0
                           label="SI"
                         />
                         <q-radio
                           v-model="respuestaDetalle[36].pdf_cumplimiento"
-                          val="1"
+                          :val=1
                           label="NO"
                         />
                         <q-radio
                           v-model="respuestaDetalle[36].pdf_cumplimiento"
-                          val="2"
+                          :val=2
                           label="NO CORRESPONDE"
                         />
                       </div>
@@ -2985,17 +2988,17 @@
                       <div class="col-2" style="margin-top: -10px">
                         <q-radio
                           v-model="respuestaDetalle[37].pdf_cumplimiento"
-                          val="0"
+                          :val=0
                           label="SI"
                         />
                         <q-radio
                           v-model="respuestaDetalle[37].pdf_cumplimiento"
-                          val="1"
+                          :val=1
                           label="NO"
                         />
                         <q-radio
                           v-model="respuestaDetalle[37].pdf_cumplimiento"
-                          val="2"
+                          :val=2
                           label="NO CORRESPONDE"
                         />
                       </div>
@@ -3058,17 +3061,17 @@
                       <div class="col-2" style="margin-top: -10px">
                         <q-radio
                           v-model="respuestaDetalle[38].pdf_cumplimiento"
-                          val="0"
+                          :val=0
                           label="SI"
                         />
                         <q-radio
                           v-model="respuestaDetalle[38].pdf_cumplimiento"
-                          val="1"
+                          :val=1
                           label="NO"
                         />
                         <q-radio
                           v-model="respuestaDetalle[38].pdf_cumplimiento"
-                          val="2"
+                          :val=2
                           label="NO CORRESPONDE"
                         />
                       </div>
@@ -3131,17 +3134,17 @@
                       <div class="col-2" style="margin-top: -10px">
                         <q-radio
                           v-model="respuestaDetalle[39].pdf_cumplimiento"
-                          val="0"
+                          :val=0
                           label="SI"
                         />
                         <q-radio
                           v-model="respuestaDetalle[39].pdf_cumplimiento"
-                          val="1"
+                          :val=1
                           label="NO"
                         />
                         <q-radio
                           v-model="respuestaDetalle[39].pdf_cumplimiento"
-                          val="2"
+                          :val=2
                           label="NO CORRESPONDE"
                         />
                       </div>
@@ -3204,17 +3207,17 @@
                       <div class="col-2" style="margin-top: -10px">
                         <q-radio
                           v-model="respuestaDetalle[40].pdf_cumplimiento"
-                          val="0"
+                          :val=0
                           label="SI"
                         />
                         <q-radio
                           v-model="respuestaDetalle[40].pdf_cumplimiento"
-                          val="1"
+                          :val=1
                           label="NO"
                         />
                         <q-radio
                           v-model="respuestaDetalle[40].pdf_cumplimiento"
-                          val="2"
+                          :val=2
                           label="NO CORRESPONDE"
                         />
                       </div>
@@ -3277,17 +3280,17 @@
                       <div class="col-2" style="margin-top: -10px">
                         <q-radio
                           v-model="respuestaDetalle[41].pdf_cumplimiento"
-                          val="0"
+                          :val=0
                           label="SI"
                         />
                         <q-radio
                           v-model="respuestaDetalle[41].pdf_cumplimiento"
-                          val="1"
+                          :val=1
                           label="NO"
                         />
                         <q-radio
                           v-model="respuestaDetalle[41].pdf_cumplimiento"
-                          val="2"
+                          :val=2
                           label="NO CORRESPONDE"
                         />
                       </div>
@@ -3350,17 +3353,17 @@
                       <div class="col-2" style="margin-top: -10px">
                         <q-radio
                           v-model="respuestaDetalle[42].pdf_cumplimiento"
-                          val="0"
+                          :val=0
                           label="SI"
                         />
                         <q-radio
                           v-model="respuestaDetalle[42].pdf_cumplimiento"
-                          val="1"
+                          :val=1
                           label="NO"
                         />
                         <q-radio
                           v-model="respuestaDetalle[42].pdf_cumplimiento"
-                          val="2"
+                          :val=2
                           label="NO CORRESPONDE"
                         />
                       </div>
@@ -4300,17 +4303,17 @@
                       <div class="col-2" style="margin-top: -10px">
                         <q-radio
                           v-model="respuestaDetalle[61].pdf_cumplimiento"
-                          val="0"
+                          :val=0
                           label="SI"
                         />
                         <q-radio
                           v-model="respuestaDetalle[61].pdf_cumplimiento"
-                          val="1"
+                          :val=1
                           label="NO"
                         />
                         <q-radio
                           v-model="respuestaDetalle[61].pdf_cumplimiento"
-                          val="2"
+                          :val=2
                           label="NO CORRESPONDE"
                         />
                       </div>
@@ -4373,17 +4376,17 @@
                       <div class="col-2" style="margin-top: -10px">
                         <q-radio
                           v-model="respuestaDetalle[62].pdf_cumplimiento"
-                          val="0"
+                          :val=0
                           label="SI"
                         />
                         <q-radio
                           v-model="respuestaDetalle[62].pdf_cumplimiento"
-                          val="1"
+                          :val=1
                           label="NO"
                         />
                         <q-radio
                           v-model="respuestaDetalle[62].pdf_cumplimiento"
-                          val="2"
+                          :val=2
                           label="NO CORRESPONDE"
                         />
                       </div>
@@ -4446,17 +4449,17 @@
                       <div class="col-2" style="margin-top: -10px">
                         <q-radio
                           v-model="respuestaDetalle[63].pdf_cumplimiento"
-                          val="0"
+                          :val=0
                           label="SI"
                         />
                         <q-radio
                           v-model="respuestaDetalle[63].pdf_cumplimiento"
-                          val="1"
+                          :val=1
                           label="NO"
                         />
                         <q-radio
                           v-model="respuestaDetalle[63].pdf_cumplimiento"
-                          val="2"
+                          :val=2
                           label="NO CORRESPONDE"
                         />
                       </div>
@@ -4529,17 +4532,17 @@
                       <div class="col-2" style="margin-top: -10px">
                         <q-radio
                           v-model="respuestaDetalle[64].pdf_cumplimiento"
-                          val="0"
+                          :val=0
                           label="SI"
                         />
                         <q-radio
                           v-model="respuestaDetalle[64].pdf_cumplimiento"
-                          val="1"
+                          :val=1
                           label="NO"
                         />
                         <q-radio
                           v-model="respuestaDetalle[64].pdf_cumplimiento"
-                          val="2"
+                          :val=2
                           label="NO CORRESPONDE"
                         />
                       </div>
@@ -4606,17 +4609,17 @@
                       <div class="col-2" style="margin-top: -10px">
                         <q-radio
                           v-model="respuestaDetalle[65].pdf_cumplimiento"
-                          val="0"
+                          :val=0
                           label="SI"
                         />
                         <q-radio
                           v-model="respuestaDetalle[65].pdf_cumplimiento"
-                          val="1"
+                          :val=1
                           label="NO"
                         />
                         <q-radio
                           v-model="respuestaDetalle[65].pdf_cumplimiento"
-                          val="2"
+                          :val=2
                           label="NO CORRESPONDE"
                         />
                       </div>
@@ -4679,17 +4682,17 @@
                       <div class="col-2" style="margin-top: -10px">
                         <q-radio
                           v-model="respuestaDetalle[66].pdf_cumplimiento"
-                          val="0"
+                          :val=0
                           label="SI"
                         />
                         <q-radio
                           v-model="respuestaDetalle[66].pdf_cumplimiento"
-                          val="1"
+                          :val=1
                           label="NO"
                         />
                         <q-radio
                           v-model="respuestaDetalle[66].pdf_cumplimiento"
-                          val="2"
+                          :val=2
                           label="NO CORRESPONDE"
                         />
                       </div>
@@ -4753,17 +4756,17 @@
                       <div class="col-2" style="margin-top: -10px">
                         <q-radio
                           v-model="respuestaDetalle[67].pdf_cumplimiento"
-                          val="0"
+                          :val=0
                           label="SI"
                         />
                         <q-radio
                           v-model="respuestaDetalle[67].pdf_cumplimiento"
-                          val="1"
+                          :val=1
                           label="NO"
                         />
                         <q-radio
                           v-model="respuestaDetalle[67].pdf_cumplimiento"
-                          val="2"
+                          :val=2
                           label="NO CORRESPONDE"
                         />
                       </div>
@@ -4823,17 +4826,17 @@
                       <div class="col-2" style="margin-top: -10px">
                         <q-radio
                           v-model="respuestaDetalle[68].pdf_cumplimiento"
-                          val="0"
+                          :val=0
                           label="SI"
                         />
                         <q-radio
                           v-model="respuestaDetalle[68].pdf_cumplimiento"
-                          val="1"
+                          :val=1
                           label="NO"
                         />
                         <q-radio
                           v-model="respuestaDetalle[68].pdf_cumplimiento"
-                          val="2"
+                          :val=2
                           label="NO CORRESPONDE"
                         />
                       </div>
@@ -4893,17 +4896,17 @@
                       <div class="col-2" style="margin-top: -10px">
                         <q-radio
                           v-model="respuestaDetalle[69].pdf_cumplimiento"
-                          val="0"
+                          :val=0
                           label="SI"
                         />
                         <q-radio
                           v-model="respuestaDetalle[69].pdf_cumplimiento"
-                          val="1"
+                          :val=1
                           label="NO"
                         />
                         <q-radio
                           v-model="respuestaDetalle[69].pdf_cumplimiento"
-                          val="2"
+                          :val=2
                           label="NO CORRESPONDE"
                         />
                       </div>
@@ -4963,17 +4966,17 @@
                       <div class="col-2" style="margin-top: -10px">
                         <q-radio
                           v-model="respuestaDetalle[70].pdf_cumplimiento"
-                          val="0"
+                          :val=0
                           label="SI"
                         />
                         <q-radio
                           v-model="respuestaDetalle[70].pdf_cumplimiento"
-                          val="1"
+                          :val=1
                           label="NO"
                         />
                         <q-radio
                           v-model="respuestaDetalle[70].pdf_cumplimiento"
-                          val="2"
+                          :val=2
                           label="NO CORRESPONDE"
                         />
                       </div>
@@ -5036,17 +5039,17 @@
                       <div class="col-2" style="margin-top: -10px">
                         <q-radio
                           v-model="respuestaDetalle[71].pdf_cumplimiento"
-                          val="0"
+                          :val=0
                           label="SI"
                         />
                         <q-radio
                           v-model="respuestaDetalle[71].pdf_cumplimiento"
-                          val="1"
+                          :val=1
                           label="NO"
                         />
                         <q-radio
                           v-model="respuestaDetalle[71].pdf_cumplimiento"
-                          val="2"
+                          :val=2
                           label="NO CORRESPONDE"
                         />
                       </div>
@@ -5106,17 +5109,17 @@
                       <div class="col-2" style="margin-top: -10px">
                         <q-radio
                           v-model="respuestaDetalle[72].pdf_cumplimiento"
-                          val="0"
+                          :val=0
                           label="SI"
                         />
                         <q-radio
                           v-model="respuestaDetalle[72].pdf_cumplimiento"
-                          val="1"
+                          :val=1
                           label="NO"
                         />
                         <q-radio
                           v-model="respuestaDetalle[72].pdf_cumplimiento"
-                          val="2"
+                          :val=2
                           label="NO CORRESPONDE"
                         />
                       </div>
@@ -5179,17 +5182,17 @@
                       <div class="col-2" style="margin-top: -10px">
                         <q-radio
                           v-model="respuestaDetalle[73].pdf_cumplimiento"
-                          val="0"
+                          :val=0
                           label="SI"
                         />
                         <q-radio
                           v-model="respuestaDetalle[73].pdf_cumplimiento"
-                          val="1"
+                          :val=1
                           label="NO"
                         />
                         <q-radio
                           v-model="respuestaDetalle[73].pdf_cumplimiento"
-                          val="2"
+                          :val=2
                           label="NO CORRESPONDE"
                         />
                       </div>
@@ -5251,17 +5254,17 @@
                       <div class="col-2" style="margin-top: -10px">
                         <q-radio
                           v-model="respuestaDetalle[74].pdf_cumplimiento"
-                          val="0"
+                          :val=0
                           label="SI"
                         />
                         <q-radio
                           v-model="respuestaDetalle[74].pdf_cumplimiento"
-                          val="1"
+                          :val=1
                           label="NO"
                         />
                         <q-radio
                           v-model="respuestaDetalle[74].pdf_cumplimiento"
-                          val="2"
+                          :val=2
                           label="NO CORRESPONDE"
                         />
                       </div>
@@ -5324,17 +5327,17 @@
                       <div class="col-2" style="margin-top: -10px">
                         <q-radio
                           v-model="respuestaDetalle[75].pdf_cumplimiento"
-                          val="0"
+                          :val=0
                           label="SI"
                         />
                         <q-radio
                           v-model="respuestaDetalle[75].pdf_cumplimiento"
-                          val="1"
+                          :val=1
                           label="NO"
                         />
                         <q-radio
                           v-model="respuestaDetalle[75].pdf_cumplimiento"
-                          val="2"
+                          :val=2
                           label="NO CORRESPONDE"
                         />
                       </div>
@@ -5397,17 +5400,17 @@
                       <div class="col-2" style="margin-top: -10px">
                         <q-radio
                           v-model="respuestaDetalle[76].pdf_cumplimiento"
-                          val="0"
+                          :val=0
                           label="SI"
                         />
                         <q-radio
                           v-model="respuestaDetalle[76].pdf_cumplimiento"
-                          val="1"
+                          :val=1
                           label="NO"
                         />
                         <q-radio
                           v-model="respuestaDetalle[76].pdf_cumplimiento"
-                          val="2"
+                          :val=2
                           label="NO CORRESPONDE"
                         />
                       </div>
@@ -5469,17 +5472,17 @@
                       <div class="col-2" style="margin-top: -10px">
                         <q-radio
                           v-model="respuestaDetalle[77].pdf_cumplimiento"
-                          val="0"
+                          :val=0
                           label="SI"
                         />
                         <q-radio
                           v-model="respuestaDetalle[77].pdf_cumplimiento"
-                          val="1"
+                          :val=1
                           label="NO"
                         />
                         <q-radio
                           v-model="respuestaDetalle[77].pdf_cumplimiento"
-                          val="2"
+                          :val=2
                           label="NO CORRESPONDE"
                         />
                       </div>
@@ -5541,17 +5544,17 @@
                       <div class="col-2" style="margin-top: -10px">
                         <q-radio
                           v-model="respuestaDetalle[78].pdf_cumplimiento"
-                          val="0"
+                          :val=0
                           label="SI"
                         />
                         <q-radio
                           v-model="respuestaDetalle[78].pdf_cumplimiento"
-                          val="1"
+                          :val=1
                           label="NO"
                         />
                         <q-radio
                           v-model="respuestaDetalle[78].pdf_cumplimiento"
-                          val="2"
+                          :val=2
                           label="NO CORRESPONDE"
                         />
                       </div>
@@ -5622,17 +5625,17 @@
                       <div class="col-2" style="margin-top: -10px">
                         <q-radio
                           v-model="respuestaDetalle[79].pdf_cumplimiento"
-                          val="0"
+                          :val=0
                           label="SI"
                         />
                         <q-radio
                           v-model="respuestaDetalle[79].pdf_cumplimiento"
-                          val="1"
+                          :val=1
                           label="NO"
                         />
                         <q-radio
                           v-model="respuestaDetalle[79].pdf_cumplimiento"
-                          val="2"
+                          :val=2
                           label="NO CORRESPONDE"
                         />
                       </div>
@@ -5694,17 +5697,17 @@
                       <div class="col-2" style="margin-top: -10px">
                         <q-radio
                           v-model="respuestaDetalle[80].pdf_cumplimiento"
-                          val="0"
+                          :val=0
                           label="SI"
                         />
                         <q-radio
                           v-model="respuestaDetalle[80].pdf_cumplimiento"
-                          val="1"
+                          :val=1
                           label="NO"
                         />
                         <q-radio
                           v-model="respuestaDetalle[80].pdf_cumplimiento"
-                          val="2"
+                          :val=2
                           label="NO CORRESPONDE"
                         />
                       </div>
@@ -5764,17 +5767,17 @@
                       <div class="col-2" style="margin-top: -10px">
                         <q-radio
                           v-model="respuestaDetalle[81].pdf_cumplimiento"
-                          val="0"
+                          :val=0
                           label="SI"
                         />
                         <q-radio
                           v-model="respuestaDetalle[81].pdf_cumplimiento"
-                          val="1"
+                          :val=1
                           label="NO"
                         />
                         <q-radio
                           v-model="respuestaDetalle[81].pdf_cumplimiento"
-                          val="2"
+                          :val=2
                           label="NO CORRESPONDE"
                         />
                       </div>
@@ -5834,17 +5837,17 @@
                       <div class="col-2" style="margin-top: -10px">
                         <q-radio
                           v-model="respuestaDetalle[82].pdf_cumplimiento"
-                          val="0"
+                          :val=0
                           label="SI"
                         />
                         <q-radio
                           v-model="respuestaDetalle[82].pdf_cumplimiento"
-                          val="1"
+                          :val=1
                           label="NO"
                         />
                         <q-radio
                           v-model="respuestaDetalle[82].pdf_cumplimiento"
-                          val="2"
+                          :val=2
                           label="NO CORRESPONDE"
                         />
                       </div>
@@ -5908,17 +5911,17 @@
                       <div class="col-2" style="margin-top: -10px">
                         <q-radio
                           v-model="respuestaDetalle[83].pdf_cumplimiento"
-                          val="0"
+                          :val=0
                           label="SI"
                         />
                         <q-radio
                           v-model="respuestaDetalle[83].pdf_cumplimiento"
-                          val="1"
+                          :val=1
                           label="NO"
                         />
                         <q-radio
                           v-model="respuestaDetalle[83].pdf_cumplimiento"
-                          val="2"
+                          :val=2
                           label="NO CORRESPONDE"
                         />
                       </div>
@@ -6047,17 +6050,17 @@
                       <div class="col-2" style="margin-top: -10px">
                         <q-radio
                           v-model="respuestaDetalle[84].pdf_cumplimiento"
-                          val="0"
+                          :val=0
                           label="SI"
                         />
                         <q-radio
                           v-model="respuestaDetalle[84].pdf_cumplimiento"
-                          val="1"
+                          :val=1
                           label="NO"
                         />
                         <q-radio
                           v-model="respuestaDetalle[84].pdf_cumplimiento"
-                          val="2"
+                          :val=2
                           label="NO CORRESPONDE"
                         />
                       </div>
@@ -6153,17 +6156,17 @@
                       <div class="col-2" style="margin-top: -10px">
                         <q-radio
                           v-model="respuestaDetalle[85].pdf_cumplimiento"
-                          val="0"
+                          :val=0
                           label="SI"
                         />
                         <q-radio
                           v-model="respuestaDetalle[85].pdf_cumplimiento"
-                          val="1"
+                          :val=1
                           label="NO"
                         />
                         <q-radio
                           v-model="respuestaDetalle[85].pdf_cumplimiento"
-                          val="2"
+                          :val=2
                           label="NO CORRESPONDE"
                         />
                       </div>
@@ -6263,17 +6266,17 @@
                       <div class="col-2" style="margin-top: -10px">
                         <q-radio
                           v-model="respuestaDetalle[86].pdf_cumplimiento"
-                          val="0"
+                          :val=0
                           label="SI"
                         />
                         <q-radio
                           v-model="respuestaDetalle[86].pdf_cumplimiento"
-                          val="1"
+                          :val=1
                           label="NO"
                         />
                         <q-radio
                           v-model="respuestaDetalle[86].pdf_cumplimiento"
-                          val="2"
+                          :val=2
                           label="NO CORRESPONDE"
                         />
                       </div>
@@ -6369,17 +6372,17 @@
                       <div class="col-2" style="margin-top: -10px">
                         <q-radio
                           v-model="respuestaDetalle[87].pdf_cumplimiento"
-                          val="0"
+                          :val=0
                           label="SI"
                         />
                         <q-radio
                           v-model="respuestaDetalle[87].pdf_cumplimiento"
-                          val="1"
+                          :val=1
                           label="NO"
                         />
                         <q-radio
                           v-model="respuestaDetalle[87].pdf_cumplimiento"
-                          val="2"
+                          :val=2
                           label="NO CORRESPONDE"
                         />
                       </div>
@@ -6475,17 +6478,17 @@
                       <div class="col-2" style="margin-top: -10px">
                         <q-radio
                           v-model="respuestaDetalle[88].pdf_cumplimiento"
-                          val="0"
+                          :val=0
                           label="SI"
                         />
                         <q-radio
                           v-model="respuestaDetalle[88].pdf_cumplimiento"
-                          val="1"
+                          :val=1
                           label="NO"
                         />
                         <q-radio
                           v-model="respuestaDetalle[88].pdf_cumplimiento"
-                          val="2"
+                          :val=2
                           label="NO CORRESPONDE"
                         />
                       </div>
@@ -6581,17 +6584,17 @@
                       <div class="col-2" style="margin-top: -10px">
                         <q-radio
                           v-model="respuestaDetalle[89].pdf_cumplimiento"
-                          val="0"
+                          :val=0
                           label="SI"
                         />
                         <q-radio
                           v-model="respuestaDetalle[89].pdf_cumplimiento"
-                          val="1"
+                          :val=1
                           label="NO"
                         />
                         <q-radio
                           v-model="respuestaDetalle[89].pdf_cumplimiento"
-                          val="2"
+                          :val=2
                           label="NO CORRESPONDE"
                         />
                       </div>
@@ -6687,17 +6690,17 @@
                       <div class="col-2" style="margin-top: -10px">
                         <q-radio
                           v-model="respuestaDetalle[90].pdf_cumplimiento"
-                          val="0"
+                          :val=0
                           label="SI"
                         />
                         <q-radio
                           v-model="respuestaDetalle[90].pdf_cumplimiento"
-                          val="1"
+                          :val=1
                           label="NO"
                         />
                         <q-radio
                           v-model="respuestaDetalle[90].pdf_cumplimiento"
-                          val="2"
+                          :val=2
                           label="NO CORRESPONDE"
                         />
                       </div>
@@ -6797,17 +6800,17 @@
                       <div class="col-2" style="margin-top: -10px">
                         <q-radio
                           v-model="respuestaDetalle[91].pdf_cumplimiento"
-                          val="0"
+                          :val=0
                           label="SI"
                         />
                         <q-radio
                           v-model="respuestaDetalle[91].pdf_cumplimiento"
-                          val="1"
+                          :val=1
                           label="NO"
                         />
                         <q-radio
                           v-model="respuestaDetalle[91].pdf_cumplimiento"
-                          val="2"
+                          :val=2
                           label="NO CORRESPONDE"
                         />
                       </div>
@@ -6903,17 +6906,17 @@
                       <div class="col-2" style="margin-top: -10px">
                         <q-radio
                           v-model="respuestaDetalle[92].pdf_cumplimiento"
-                          val="0"
+                          :val=0
                           label="SI"
                         />
                         <q-radio
                           v-model="respuestaDetalle[92].pdf_cumplimiento"
-                          val="1"
+                          :val=1
                           label="NO"
                         />
                         <q-radio
                           v-model="respuestaDetalle[92].pdf_cumplimiento"
-                          val="2"
+                          :val=2
                           label="NO CORRESPONDE"
                         />
                       </div>
@@ -7009,17 +7012,17 @@
                       <div class="col-2" style="margin-top: -10px">
                         <q-radio
                           v-model="respuestaDetalle[93].pdf_cumplimiento"
-                          val="0"
+                          :val=0
                           label="SI"
                         />
                         <q-radio
                           v-model="respuestaDetalle[93].pdf_cumplimiento"
-                          val="1"
+                          :val=1
                           label="NO"
                         />
                         <q-radio
                           v-model="respuestaDetalle[93].pdf_cumplimiento"
-                          val="2"
+                          :val=2
                           label="NO CORRESPONDE"
                         />
                       </div>
@@ -7115,17 +7118,17 @@
                       <div class="col-2" style="margin-top: -10px">
                         <q-radio
                           v-model="respuestaDetalle[94].pdf_cumplimiento"
-                          val="0"
+                          :val=0
                           label="SI"
                         />
                         <q-radio
                           v-model="respuestaDetalle[94].pdf_cumplimiento"
-                          val="1"
+                          :val=1
                           label="NO"
                         />
                         <q-radio
                           v-model="respuestaDetalle[94].pdf_cumplimiento"
-                          val="2"
+                          :val=2
                           label="NO CORRESPONDE"
                         />
                       </div>
@@ -7221,17 +7224,17 @@
                       <div class="col-2" style="margin-top: -10px">
                         <q-radio
                           v-model="respuestaDetalle[95].pdf_cumplimiento"
-                          val="0"
+                          :val=0
                           label="SI"
                         />
                         <q-radio
                           v-model="respuestaDetalle[95].pdf_cumplimiento"
-                          val="1"
+                          :val=1
                           label="NO"
                         />
                         <q-radio
                           v-model="respuestaDetalle[95].pdf_cumplimiento"
-                          val="2"
+                          :val=2
                           label="NO CORRESPONDE"
                         />
                       </div>
@@ -7326,17 +7329,17 @@
                       <div class="col-2" style="margin-top: -10px">
                         <q-radio
                           v-model="respuestaDetalle[96].pdf_cumplimiento"
-                          val="0"
+                          :val=0
                           label="SI"
                         />
                         <q-radio
                           v-model="respuestaDetalle[96].pdf_cumplimiento"
-                          val="1"
+                          :val=1
                           label="NO"
                         />
                         <q-radio
                           v-model="respuestaDetalle[96].pdf_cumplimiento"
-                          val="2"
+                          :val=2
                           label="NO CORRESPONDE"
                         />
                       </div>
@@ -7432,17 +7435,17 @@
                       <div class="col-2" style="margin-top: -10px">
                         <q-radio
                           v-model="respuestaDetalle[97].pdf_cumplimiento"
-                          val="0"
+                          :val=0
                           label="SI"
                         />
                         <q-radio
                           v-model="respuestaDetalle[97].pdf_cumplimiento"
-                          val="1"
+                          :val=1
                           label="NO"
                         />
                         <q-radio
                           v-model="respuestaDetalle[97].pdf_cumplimiento"
-                          val="2"
+                          :val=2
                           label="NO CORRESPONDE"
                         />
                       </div>
@@ -7538,17 +7541,17 @@
                       <div class="col-2" style="margin-top: -10px">
                         <q-radio
                           v-model="respuestaDetalle[98].pdf_cumplimiento"
-                          val="0"
+                          :val=0
                           label="SI"
                         />
                         <q-radio
                           v-model="respuestaDetalle[98].pdf_cumplimiento"
-                          val="1"
+                          :val=1
                           label="NO"
                         />
                         <q-radio
                           v-model="respuestaDetalle[98].pdf_cumplimiento"
-                          val="2"
+                          :val=2
                           label="NO CORRESPONDE"
                         />
                       </div>
@@ -7643,17 +7646,17 @@
                       <div class="col-2" style="margin-top: -10px">
                         <q-radio
                           v-model="respuestaDetalle[99].pdf_cumplimiento"
-                          val="0"
+                          :val=0
                           label="SI"
                         />
                         <q-radio
                           v-model="respuestaDetalle[99].pdf_cumplimiento"
-                          val="1"
+                          :val=1
                           label="NO"
                         />
                         <q-radio
                           v-model="respuestaDetalle[99].pdf_cumplimiento"
-                          val="2"
+                          :val=2
                           label="NO CORRESPONDE"
                         />
                       </div>
@@ -7755,17 +7758,17 @@
                       <div class="col-2" style="margin-top: -10px">
                         <q-radio
                           v-model="respuestaDetalle[100].pdf_cumplimiento"
-                          val="0"
+                          :val=0
                           label="SI"
                         />
                         <q-radio
                           v-model="respuestaDetalle[100].pdf_cumplimiento"
-                          val="1"
+                          :val=1
                           label="NO"
                         />
                         <q-radio
                           v-model="respuestaDetalle[100].pdf_cumplimiento"
-                          val="2"
+                          :val=2
                           label="NO CORRESPONDE"
                         />
                       </div>
@@ -7865,17 +7868,17 @@
                       <div class="col-2" style="margin-top: -10px">
                         <q-radio
                           v-model="respuestaDetalle[101].pdf_cumplimiento"
-                          val="0"
+                          :val=0
                           label="SI"
                         />
                         <q-radio
                           v-model="respuestaDetalle[101].pdf_cumplimiento"
-                          val="1"
+                          :val=1
                           label="NO"
                         />
                         <q-radio
                           v-model="respuestaDetalle[101].pdf_cumplimiento"
-                          val="2"
+                          :val=2
                           label="NO CORRESPONDE"
                         />
                       </div>
@@ -7971,17 +7974,17 @@
                       <div class="col-2" style="margin-top: -10px">
                         <q-radio
                           v-model="respuestaDetalle[102].pdf_cumplimiento"
-                          val="0"
+                          :val=0
                           label="SI"
                         />
                         <q-radio
                           v-model="respuestaDetalle[102].pdf_cumplimiento"
-                          val="1"
+                          :val=1
                           label="NO"
                         />
                         <q-radio
                           v-model="respuestaDetalle[102].pdf_cumplimiento"
-                          val="2"
+                          :val=2
                           label="NO CORRESPONDE"
                         />
                       </div>
@@ -8077,17 +8080,17 @@
                       <div class="col-2" style="margin-top: -10px">
                         <q-radio
                           v-model="respuestaDetalle[103].pdf_cumplimiento"
-                          val="0"
+                          :val=0
                           label="SI"
                         />
                         <q-radio
                           v-model="respuestaDetalle[103].pdf_cumplimiento"
-                          val="1"
+                          :val=1
                           label="NO"
                         />
                         <q-radio
                           v-model="respuestaDetalle[103].pdf_cumplimiento"
-                          val="2"
+                          :val=2
                           label="NO CORRESPONDE"
                         />
                       </div>
@@ -8183,17 +8186,17 @@
                       <div class="col-2" style="margin-top: -10px">
                         <q-radio
                           v-model="respuestaDetalle[104].pdf_cumplimiento"
-                          val="0"
+                          :val=0
                           label="SI"
                         />
                         <q-radio
                           v-model="respuestaDetalle[104].pdf_cumplimiento"
-                          val="1"
+                          :val=1
                           label="NO"
                         />
                         <q-radio
                           v-model="respuestaDetalle[104].pdf_cumplimiento"
-                          val="2"
+                          :val=2
                           label="NO CORRESPONDE"
                         />
                       </div>
@@ -8256,17 +8259,17 @@
                       <div class="col-2" style="margin-top: -10px">
                         <q-radio
                           v-model="respuestaDetalle[105].pdf_cumplimiento"
-                          val="0"
+                          :val=0
                           label="SI"
                         />
                         <q-radio
                           v-model="respuestaDetalle[105].pdf_cumplimiento"
-                          val="1"
+                          :val=1
                           label="NO"
                         />
                         <q-radio
                           v-model="respuestaDetalle[105].pdf_cumplimiento"
-                          val="2"
+                          :val=2
                           label="NO CORRESPONDE"
                         />
                       </div>
@@ -8329,17 +8332,17 @@
                       <div class="col-2" style="margin-top: -10px">
                         <q-radio
                           v-model="respuestaDetalle[106].pdf_cumplimiento"
-                          val="0"
+                          :val=0
                           label="SI"
                         />
                         <q-radio
                           v-model="respuestaDetalle[106].pdf_cumplimiento"
-                          val="1"
+                          :val=1
                           label="NO"
                         />
                         <q-radio
                           v-model="respuestaDetalle[106].pdf_cumplimiento"
-                          val="2"
+                          :val=2
                           label="NO CORRESPONDE"
                         />
                       </div>
@@ -8402,17 +8405,17 @@
                       <div class="col-2" style="margin-top: -10px">
                         <q-radio
                           v-model="respuestaDetalle[107].pdf_cumplimiento"
-                          val="0"
+                          :val=0
                           label="SI"
                         />
                         <q-radio
                           v-model="respuestaDetalle[107].pdf_cumplimiento"
-                          val="1"
+                          :val=1
                           label="NO"
                         />
                         <q-radio
                           v-model="respuestaDetalle[107].pdf_cumplimiento"
-                          val="2"
+                          :val=2
                           label="NO CORRESPONDE"
                         />
                       </div>
@@ -8480,17 +8483,17 @@
                       <div class="col-2" style="margin-top: -10px">
                         <q-radio
                           v-model="respuestaDetalle[108].pdf_cumplimiento"
-                          val="0"
+                          :val=0
                           label="SI"
                         />
                         <q-radio
                           v-model="respuestaDetalle[108].pdf_cumplimiento"
-                          val="1"
+                          :val=1
                           label="NO"
                         />
                         <q-radio
                           v-model="respuestaDetalle[108].pdf_cumplimiento"
-                          val="2"
+                          :val=2
                           label="NO CORRESPONDE"
                         />
                       </div>
@@ -8553,17 +8556,17 @@
                       <div class="col-2" style="margin-top: -10px">
                         <q-radio
                           v-model="respuestaDetalle[109].pdf_cumplimiento"
-                          val="0"
+                          :val=0
                           label="SI"
                         />
                         <q-radio
                           v-model="respuestaDetalle[109].pdf_cumplimiento"
-                          val="1"
+                          :val=1
                           label="NO"
                         />
                         <q-radio
                           v-model="respuestaDetalle[109].pdf_cumplimiento"
-                          val="2"
+                          :val=2
                           label="NO CORRESPONDE"
                         />
                       </div>
@@ -8632,6 +8635,8 @@
                           icon-left="add"
                           label="Finalizar"
                           @click="EjecucionGuardado('COM')"
+                          :disable="paramEnvio.operacion == 'CON' ? true : false"
+                          
                         />
                       </div>
                     </div>
@@ -8661,6 +8666,7 @@
               icon-left="add"
               label="Finalizar"
               @click="EjecucionGuardado('OBS')"
+              :disable="paramEnvio.operacion == 'CON' ? true : false"
             />
           </div>
         </div>
@@ -8842,12 +8848,41 @@ export default {
     }
   },
 
+  created(){
+    if (this.paramEnvio.operacion == 'CON') {
+      this.ConsultaCabecera();
+      if(this.respuestaCabecera[0].pfObservacionesGeneral == null){
+         this.accion = 1
+      }else{
+         this.accion = 2
+      }   
+      this.ConsultaDetalleFicha();
+      this.ConsultaInstituciones();
+    }else if(this.paramEnvio.operacion == 'MOD'){
+      this.ConsultaCabecera();
+      if(this.respuestaCabecera[0].pfObservacionesGeneral == null){
+         this.accion = 1
+      }else{
+         this.accion = 2
+      }   
+      this.ConsultaDetalleFicha();
+      this.ConsultaInstituciones();
+    }
+  },
+ 
+
+
   methods: {
     estadoFinalGU(e) {
       if (e == true) {
         this.$refs.cancelar.$el.click();
       }
     },
+    
+    mostrarAhora(){
+        this.ConsultaDetalleFicha();
+    },
+
 
     ConsultaResponsableIE() {
       let datos = new FormData();
@@ -8916,7 +8951,7 @@ export default {
       if (tipoOperacion == "COM") {
         (this.respuestaCabecera[0].pf_resultado = 1),
           (this.respuestaCabecera[0].pf_estado = 2);
-      } else {
+      }else {
         (this.respuestaCabecera[0].pf_resultado = 2),
           (this.respuestaCabecera[0].pf_estado = 2);
       }
