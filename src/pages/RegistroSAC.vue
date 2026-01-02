@@ -38,7 +38,13 @@
       <div class="col-2"></div>
 
       <div class="col-2">
-        <q-btn color="red" icon-right="search" label="Consulta" @click="listaFicha"/>
+        <q-btn
+          color="red"
+          icon-right="search"
+          label="Consulta"
+          @click="listaFicha"
+          ref="botonConsulta"
+        />
       </div>
 
       <div class="col-10"></div>
@@ -84,7 +90,8 @@
                 no-icon-animation
               >
                 <q-list>
-                  <q-item v-if="props.row.resultado == 1"
+                  <q-item
+                    v-if="props.row.estado == 2"
                     clickable
                     v-close-popup
                     @click="mantenimiento('CON', props.rowIndex)"
@@ -95,7 +102,8 @@
                     <q-item-section> CONSULTAR </q-item-section>
                   </q-item>
 
-                  <q-item v-if="props.row.resultado != 1"
+                  <q-item
+                    v-else
                     clickable
                     v-close-popup
                     @click="mantenimiento('MOD', props.rowIndex)"
@@ -116,7 +124,6 @@
                     </q-item-section>
                     <q-item-section>  </q-item-section>
                   </q-item>-->
-
                 </q-list>
               </q-btn-dropdown>
             </q-td>
@@ -165,10 +172,10 @@ export default {
       },
 
       respuesta: {
-        ano_: "",
-        mes_: "",
-        registra_:'',
-        ficha_: ""
+        ano_: 2026,
+        mes_: 1,
+        registra_: "",
+        ficha_: "",
       },
 
       text: "",
@@ -178,6 +185,10 @@ export default {
         usuario: null,
         codigo: null,
         operacion: null,
+        departamento: "",
+        provincia: "",
+        distrito: "",
+        resultado: null,
       },
 
       listaPrincipal: [
@@ -225,7 +236,6 @@ export default {
           field: "fechaRegistro",
           align: "left",
         },
-
 
         {
           name: "ubigeo",
@@ -277,6 +287,10 @@ export default {
     };
   },
 
+  created() {
+    this.listaFicha();
+  },
+
   methods: {
     registrarSAC() {
       if ((this.ParamVistaRegistroSAC.operacion = "REG")) {
@@ -287,19 +301,45 @@ export default {
       }
     },
 
-    estadoVistaRegistroSAC(e) {},
+    estadoVistaRegistroSAC(e) {
+      console.log(e);
+      if (e === true) {
+        this.listaFicha();
+        this.$router.push("/").then(() => {
+          this.$router.back();
+        });
+      }
+    },
 
     mantenimiento(condicion, indice) {
-      var numeroFicha = this.listaPrincipal[indice].codigoFicha
+      var numeroFicha = this.listaPrincipal[indice].codigoFicha;
       if (condicion == "CON") {
-        this.ParamVistaRegistroSAC.operacion = "CON"
-        this.ParamVistaRegistroSAC.usuario = this.$DATOS_USUARIO.codUsuario
-        this.ParamVistaRegistroSAC.codigo = numeroFicha
+        this.ParamVistaRegistroSAC.operacion = "CON";
+        this.ParamVistaRegistroSAC.usuario = this.$DATOS_USUARIO.codUsuario;
+        this.ParamVistaRegistroSAC.codigo = numeroFicha;
+        this.ParamVistaRegistroSAC.departamento =
+          this.listaPrincipal[indice].departamento;
+        this.ParamVistaRegistroSAC.provincia =
+          this.listaPrincipal[indice].provincia;
+        this.ParamVistaRegistroSAC.distrito =
+          this.listaPrincipal[indice].distrito;
+        this.ParamVistaRegistroSAC.resultado =
+          this.listaPrincipal[indice].resultado;
+
         this.vistaRegistroSAC = true;
       } else if (condicion == "MOD") {
-        this.ParamVistaRegistroSAC.operacion = "MOD"
-        this.ParamVistaRegistroSAC.usuario = this.$DATOS_USUARIO.codUsuario
-        this.ParamVistaRegistroSAC.codigo = numeroFicha
+        this.ParamVistaRegistroSAC.operacion = "MOD";
+        this.ParamVistaRegistroSAC.usuario = this.$DATOS_USUARIO.codUsuario;
+        this.ParamVistaRegistroSAC.codigo = numeroFicha;
+        this.ParamVistaRegistroSAC.departamento =
+          this.listaPrincipal[indice].departamento;
+        this.ParamVistaRegistroSAC.provincia =
+          this.listaPrincipal[indice].provincia;
+        this.ParamVistaRegistroSAC.distrito =
+          this.listaPrincipal[indice].distrito;
+        this.ParamVistaRegistroSAC.resultado =
+          this.listaPrincipal[indice].resultado;
+
         this.vistaRegistroSAC = true;
       }
     },
@@ -344,11 +384,8 @@ export default {
     definicionEstado(a) {
       var definicion = "";
       switch (a) {
-        case 0:
-          definicion = "PENDIENTE";
-          break;
         case 1:
-          //definicion = "PENDIENTE";
+          definicion = "PENDIENTE";
           break;
         case 2:
           definicion = "CULMINADO";
@@ -380,30 +417,35 @@ export default {
       return diseno;
     },
 
-
     listaFicha() {
-      this.respuesta.registra_ = this.$DATOS_USUARIO.codUsuario;
+      console.log(this.$DATOS_USUARIO.codUsuario);
 
-      let datos = new FormData();
-      datos.append(
-        "Cuerpo",
-        JSON.stringify(this.respuesta)
-      );
+      if (this.$DATOS_USUARIO.codUsuario != undefined) {
+        this.respuesta.registra_ = this.$DATOS_USUARIO.codUsuario;
 
-      this.$axios
-        .post(this.$apiUrl + "fichas/listaficha", datos, this.requestConfig)
-        .then((response) => {
-          if (response.data != null) {
-             console.log(response.data);
-             this.listaPrincipal = response.data;
-          }
-        })
-        .catch((e) => {
-          this.mostrarMensaje("EXISTE PROBLEMAS DE REGISTRO", "red", "warning");
-        })
-        .finally(() => {});
+        let datos = new FormData();
+        datos.append("Cuerpo", JSON.stringify(this.respuesta));
+
+        this.$axios
+          .post(this.$apiUrl + "fichas/listaficha", datos, this.requestConfig)
+          .then((response) => {
+            if (response.data != null) {
+              console.log(response.data);
+              this.listaPrincipal = response.data;
+            }
+          })
+          .catch((e) => {
+            this.mostrarMensaje(
+              "EXISTE PROBLEMAS DE REGISTRO",
+              "red",
+              "warning"
+            );
+          })
+          .finally(() => {});
+      } else {
+        this.$router.replace("/");
+      }
     },
-
 
     AperturaFicha() {
       let datos = new FormData();
